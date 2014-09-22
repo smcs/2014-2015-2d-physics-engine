@@ -1,6 +1,13 @@
 # Eclipse
-.metadata
 */bin/*
+.metadata/*
+!.metadata/.plugins
+.metadata/.plugins/*
+!.metadata/.plugins/org.eclipse.core.runtime
+.metadata/.plugins/org.eclipse.core.runtime/*
+!.metadata/.plugins/org.eclipse.core.runtime/.settings
+.metadata/.plugins/org.eclipse.core.runtime/.settings/*
+!.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.core.prefs
 
 # OS generated files #
 .DS_Store
