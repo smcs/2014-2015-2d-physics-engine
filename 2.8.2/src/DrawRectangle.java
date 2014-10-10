@@ -14,6 +14,6 @@ public class DrawRectangle extends WindowController {
 
 	public void onMouseRelease(Location pressPoint) {
 		box.removeFromCanvas();
-		new FilledRect(pressPoint, 40, 90, canvas);
+		new FilledRect(pressPoint, 50, 50, canvas);
 	}
 }
