@@ -6,13 +6,13 @@ import java.awt.*;
 
 public class test extends WindowController{
 	
-	public void onMousePress(Location pressPoint) {
+	public void onMouseMove(Location mousePoint) {
 		
 		// put test code in here
 		
 		
 	
-		System.out.println("this is a message");
+		System.out.println(mousePoint);
 		
 		
 		
