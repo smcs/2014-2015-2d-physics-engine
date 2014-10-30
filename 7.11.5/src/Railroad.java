@@ -8,7 +8,7 @@ public class Railroad extends WindowController {
 		new Line(100, 20, 40, 180, canvas);
 		
 		while(counter<10){
-			new FilledRect(100-10*counter,20*counter,20*counter,10,canvas);
+			new FilledRect(100-13*counter+4,20*counter,26*counter-8,counter*.8,canvas);
 			counter = counter + 1;
 		}
 		
