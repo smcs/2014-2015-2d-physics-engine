@@ -17,7 +17,7 @@ private int diceRoll3;
 	public void onMousePress(Location pressPoint){
 		canvas.clear();
 		
-		diceRoll1 = rand.nextInt(7);
+		diceRoll1 = rand.nextInt(7);	
 		diceRoll2 = rand.nextInt(7);
 		diceRoll3 = rand.nextInt(7);
 		
