@@ -1,27 +1,49 @@
+import java.awt.*;
 
-import java.util.Timer;
-import java.util.TimerTask;
-import static java.lang.System.out;
+import objectdraw.*;
 
-public class ElapsedTime {
-	Timer timer;
-	private int elapsedTime = 0;
-	
-	class Task extends TimerTask {
-	    public void run() {
-	    	elapsedTime = elapsedTime + 1;
-	    	System.out.println(elapsedTime);
-	    }
-	    	
-	      
-	private void begin(){
+public class ElapsedTime extends WindowController {
+private long starttime;
+private boolean counting = false;
 
-	    timer = new Timer();
-	    timer.schedule(new Task(), 1 * 1000);
+public void onMousePress(Location presspoint){
+	if(counting == false){
+		canvas.clear();
+		new Text("recording time", 30, 30, canvas);
+		starttime = System.currentTimeMillis();
+		counting = true;
+	}else{
+		canvas.clear();
+		new Text(System.currentTimeMillis() - starttime, 30, 30, canvas);
+		counting = false;
 	}
 	
-	
-	
-	}
-	
+		
+		
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+	
+	
+	
