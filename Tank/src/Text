@@ -1,0 +1,18 @@
+Things to test for
+
+general
+	does the tank have a tank picture
+	can i turn it
+	can it move
+	are there any errors on startup
+	are there any errors on tank actions(move, shoot, take damage, explode, etc)
+	are there any errors on collision( tank on tank, tank on wall)
+	do collisions act the way they are expected to
+
+
+
+
+on start
+	make sure that the tanks are at least a certain distance from eachother
+	make sure that the tanks are not overlapping each other.
+	make sure that tanks are not overlapping any walls
