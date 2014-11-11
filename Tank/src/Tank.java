@@ -1,14 +1,14 @@
+import java.awt.*;
+import objectdraw.*;
 
 public class Tank extends OTOS{
 
-	OTOS tank;
-	double health;
-	double heat;
-	
-	tank = new OTOS();
-	
-	Tank();
-		tank.init( getImage(RedTankRight.gif) 30, 30, 60, 40)
+	private double health;
+	private double heat;
+	private VisibleImage sprite;
+		
+	public Tank(Image img, double startX, double startY, DrawingCanvas canvas) {
+		sprite = new VisibleImage(img, startX, startY, canvas);
 	}
 	
 	
