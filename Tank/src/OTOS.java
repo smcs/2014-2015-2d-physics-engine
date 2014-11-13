@@ -4,10 +4,13 @@ import objectdraw.*;
 
 public class OTOS {
 
-	VisibleImage sprite;
+	protected VisibleImage sprite;
 	
+	public OTOS() {
+		
+	}
 	
-	void init(java.awt.Image image, double x, double y, double width, double height, DrawingCanvas canvas){
+	public OTOS(Image image, double x, double y, double width, double height, DrawingCanvas canvas){
 		sprite = new VisibleImage(image, x, y, width, height, canvas);
 	}
 	
@@ -19,6 +22,9 @@ public class OTOS {
 		sprite.moveTo(x,y);
 	}
 	
+	void moveTo(Location l){
+		sprite.moveTo(l);
+	}
 	
 	void setImage(java.awt.Image image){
 		sprite.setImage(image);
