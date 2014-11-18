@@ -1,5 +1,5 @@
 import java.awt.*;
-
+import java.util.*;
 import objectdraw.*;
 
 public class Tank extends OTOS{
@@ -7,16 +7,17 @@ public class Tank extends OTOS{
 	private double health = 10;
 	private double heat = 0;
 	private Image left, right, up, down;
+	private Vector<OTOS> everybody;
 	
 	
 	
-	
-	public Tank(Image left, Image right, Image up, Image down, double x, double y, int w, int h, DrawingCanvas canvas) {
+	public Tank(Image left, Image right, Image up, Image down, double x, double y, int w, int h, DrawingCanvas canvas, Vector<OTOS> everybody) {
 		super(right, x, y, w, h, canvas);
 		this.left = left;
 		this.right = right;
 		this.up = up;
 		this.down = down;
+		this.everybody = everybody;
 	}
 	
 	void lowerHealth(double h){
