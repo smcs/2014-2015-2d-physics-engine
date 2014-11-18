@@ -6,18 +6,12 @@ public class OTOS {
 
 	protected VisibleImage sprite;
 	
-	public OTOS() {
-		
-	}
+
 	
 	public OTOS(Image image, double x, double y, double width, double height, DrawingCanvas canvas){
 		sprite = new VisibleImage(image, x, y, width, height, canvas);
 	}
-	
-	void move(double x, double y){
-		sprite.moveTo(sprite.getX() + x, sprite.getY() + y);
-	}
-	
+
 	void moveTo(double x, double y){
 		sprite.moveTo(x,y);
 	}

@@ -3,38 +3,31 @@ import objectdraw.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Main extends WindowController implements KeyListener {
+public class Main extends WindowController{
+	
+	
+	
 	Tank tank1;
 	Tank tank2;
+	Keyboard k;
+	
+
+	
 	public void begin() {
 		this.setSize(1365,800);
-		tank1 = new Tank (getImage("Tank Sprites/RedTankRight.gif"), (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas);
-		tank2 = new Tank (getImage("Tank Sprites/RedTankRight.gif"), (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas);
-		
-		canvas.addKeyListener(this);
+		Image left, right, up, down;
+		left = getImage("Tank Sprites/RedTankLeft.gif");
+		right = getImage("Tank Sprites/RedTankRight.gif");
+		up = getImage("Tank Sprites/RedTankUp.gif");
+		down = getImage("Tank Sprites/RedTankDown.gif");
+		tank1 = new Tank (left, right, up, down, (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas);
+		tank2 = new Tank (left, right, up, down, (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas);
+		k = new Keyboard(tank1, tank2);
+		canvas.addKeyListener(k);
 	}
 	
-	public void onMousePress(Location pressPoint){
-		tank1.getX();
-		//there is an error here. no commands for tank1 seem to work. i tested with move and moveTo as well
-	}
+	
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_G) {
-			System.out.println("woo hoo!");
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 }
