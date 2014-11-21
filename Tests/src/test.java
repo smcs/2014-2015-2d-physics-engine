@@ -1,39 +1,36 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import objectdraw.*;
 
-@SuppressWarnings("serial")
-public class test extends JPanel {
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
+
+public class test extends WindowController{
 	
-	public test() {
-		KeyListener listener = new MyKeyListener();
-		addKeyListener(listener);
-		setFocusable(true);
+	
+	
+	private OTOS one;
+	private OTOS two;
+	private Vector<OTOS> everybody;
+
+	
+	public void begin() {
+		this.setSize(1365,800);
+		Image i;
+		i = getImage("Tank Sprites/RedTankLeft.gif");
+		everybody = new Vector<OTOS>();
+		one = new OTOS(i, 50, 50, 40, 60, canvas);
+		two = new OTOS(i, 80, 50, 40, 60, canvas);
 	}
 	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Mini Tennis");
-		test keyboardExample = new test();
-		frame.add(keyboardExample);
-		frame.setSize(200, 200);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public void onMouseMove(Location l){
+		one.moveTo(l);
+		if(one.overlaps(everybody).size() != 0){
+			new Text("two", 50, 60, canvas);
+		}
+		
 	}
+	
 
-	public class MyKeyListener implements KeyListener {
-		@Override
-		public void keyTyped(KeyEvent e) {
-		}
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
-		}
-	}
+	
+	
 }
