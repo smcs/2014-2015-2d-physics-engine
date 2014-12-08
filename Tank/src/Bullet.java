@@ -1,6 +1,6 @@
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.util.*;
+
 
 import objectdraw.*;
 
@@ -9,19 +9,21 @@ public class Bullet extends OTOS implements Runnable {
 
 	private Vector<OTOS> everybody;
 	private char heading;
-
+	
 	
 	Bullet(Image i, int x, int y, char h, DrawingCanvas canvas, Vector<OTOS> everybody){
 		super (i, x, y, 5, 5, canvas);
 		this.everybody = everybody;
-		new Thread(this).start();
 		heading = h;
+		new Thread(this).start();
+		everybody.addElement(this);
 	}
 	Bullet(Image i, double x, double y, char h, DrawingCanvas canvas, Vector<OTOS> everybody){
 		super (i, x, y, 5, 5, canvas);
 		this.everybody = everybody;
-		new Thread(this).start();
 		heading = h;
+		new Thread(this).start();
+		everybody.add(this);
 	}
 	
 	
@@ -31,7 +33,7 @@ public class Bullet extends OTOS implements Runnable {
 	OTOS hitObject;
 	
 	public void run() {
-		while(overlaps(everybody).size() != 0){
+		while(overlaps().size() != 0){
 			if(heading == 'w'){
 				this.moveTo(this.getX(), this.getY()-2);
 			}
@@ -46,7 +48,7 @@ public class Bullet extends OTOS implements Runnable {
 			}
 		}
 		
-		hitObject = overlaps(everybody).elementAt(1);
+		hitObject = overlaps().elementAt(1);
 		
 	}
 }

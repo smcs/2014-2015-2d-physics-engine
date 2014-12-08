@@ -2,15 +2,23 @@ import java.awt.*;
 import java.util.*;
 
 import objectdraw.*;
+	
+
 
 public class OTOS {
 
 	protected VisibleImage sprite;
 	
+	protected Vector <OTOS> everybody;
 	
 	
+	public Vector<OTOS> getEverybody(){
+		return everybody;
+	}
 	
-
+	public DrawingCanvas getCanvas(){
+		return sprite.getCanvas();
+	}
 	
 	public OTOS(Image image, double x, double y, double width, double height, DrawingCanvas canvas){
 		sprite = new VisibleImage(image, x, y, width, height, canvas);
@@ -40,7 +48,7 @@ public class OTOS {
 		return sprite.getY();
 	}
 	
-	Vector<OTOS> overlaps(Vector<OTOS> everybody){
+	Vector<OTOS> overlaps(){
 		Vector<OTOS> overlapped = new Vector<OTOS>();
 		
 		for (int counter = 0; counter<everybody.size(); counter++) {

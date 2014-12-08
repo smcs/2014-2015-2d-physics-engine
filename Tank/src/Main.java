@@ -11,7 +11,6 @@ public class Main extends WindowController{
 	private Tank tank2;
 	private Keyboard k;
 	private Bullet b;
-	private Image bulletImage = getImage("Tank Sprites/RedTankLeft.gif");
 	private Vector<OTOS> everybody;
 
 	
@@ -30,12 +29,14 @@ public class Main extends WindowController{
 		everybody.add(tank2);
 		k = new Keyboard(tank1, tank2, b);
 		canvas.addKeyListener(k);
+		for (int i = 0; i<15; i++){
+			new Wall(bImage, Math.random()*1365, Math.random()*800, canvas, everybody);
+		}
+				
 		
 	}
 	
-	Bullet newBullet(double x, double y, char h){
-		return new Bullet(bulletImage, x, y, h, canvas, everybody);
-	}
+	
 	
 
 	
