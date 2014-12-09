@@ -7,7 +7,6 @@ import objectdraw.*;
 
 public class Bullet extends OTOS implements Runnable {
 
-	private Vector<OTOS> everybody;
 	private char heading;
 	
 	
@@ -16,7 +15,7 @@ public class Bullet extends OTOS implements Runnable {
 		this.everybody = everybody;
 		heading = h;
 		new Thread(this).start();
-		everybody.addElement(this);
+		everybody.add(this);
 	}
 	Bullet(Image i, double x, double y, char h, DrawingCanvas canvas, Vector<OTOS> everybody){
 		super (i, x, y, 5, 5, canvas);

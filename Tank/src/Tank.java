@@ -7,7 +7,6 @@ public class Tank extends OTOS{
 	private double health = 10;
 	private double heat = 0;
 	private Image left, right, up, down;
-	private Vector<OTOS> everybody;
 	
 	
 	
@@ -18,6 +17,7 @@ public class Tank extends OTOS{
 		this.up = up;
 		this.down = down;
 		this.everybody = everybody;
+		everybody.add(this);
 	}
 	
 	void lowerHealth(double h){
