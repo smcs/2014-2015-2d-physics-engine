@@ -74,7 +74,10 @@ public class Keyboard extends ActiveObject implements KeyListener {
 				if(lastKey == KeyEvent.VK_F){
 				
 					new Bullet(bulletImage, tank1.getX(), tank1.getY(), 'w', tank1.getCanvas(), tank1.getEverybody());
-				
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+					}
 				}
 			}
 			try {

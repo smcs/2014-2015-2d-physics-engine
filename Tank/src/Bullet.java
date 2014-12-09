@@ -47,7 +47,7 @@ public class Bullet extends OTOS implements Runnable {
 			}
 		}
 		
-		hitObject = overlaps().elementAt(1);
+		hitObject = overlaps().elementAt(0);
 		
 	}
 }

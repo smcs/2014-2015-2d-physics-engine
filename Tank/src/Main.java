@@ -23,8 +23,8 @@ public class Main extends WindowController{
 		down = getImage("Tank Sprites/RedTankDown.gif");
 		bImage=getImage("Tank Sprites/RedTankDown.gif");
 		everybody = new Vector<OTOS>();
-		tank1 = new Tank (left, right, up, down, (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas, everybody);
-		tank2 = new Tank (left, right, up, down, (Math.random()*1200+70), (Math.random()*650)+75, 60, 40, canvas, everybody);
+		tank1 = new Tank (left, right, up, down, 50, 100, 60, 40, canvas, everybody);
+		tank2 = new Tank (left, right, up, down, 300, 100, 60, 40, canvas, everybody);
 		k = new Keyboard(tank1, tank2, b);
 		canvas.addKeyListener(k);
 		for (int i = 0; i<15; i++){
