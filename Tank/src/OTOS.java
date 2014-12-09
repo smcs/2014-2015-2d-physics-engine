@@ -53,16 +53,15 @@ public class OTOS {
 			VisibleImage other = everybody.get(counter).sprite;
 			if (other != this.sprite) {
 
-				if ((other.getX() > sprite.getX() && other.getX() < sprite
-						.getX() + sprite.getWidth())
-						|| (other.getX() + other.getWidth() > sprite.getX() && other
-								.getX() + other.getWidth() < sprite.getX()
-								+ sprite.getWidth())
-						&& (other.getY() > sprite.getY() && other.getY() < sprite
-								.getY() + sprite.getHeight())
-						|| (other.getY() + other.getHeight() > sprite.getY() && other
+				if (((other.getX() > sprite.getX() && other.getX() < sprite
+						.getX() + sprite.getWidth()) || (other.getX()
+						+ other.getWidth() > sprite.getX() && other.getX()
+						+ other.getWidth() < sprite.getX() + sprite.getWidth()))
+						&& ((other.getY() > sprite.getY() && other.getY() < sprite
+								.getY() + sprite.getHeight()) || (other.getY()
+								+ other.getHeight() > sprite.getY() && other
 								.getY() + other.getHeight() < sprite.getY()
-								+ sprite.getHeight())) {
+								+ sprite.getHeight()))) {
 					overlapped.add(everybody.get(counter));
 				}
 				// left xvalue of other is within sprite left and right x values
