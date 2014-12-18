@@ -31,16 +31,32 @@ public class Bullet extends OTOS implements Runnable {
 		Vector<OTOS> overlaps;
 		do {
 			if (heading == 'w') {
-				this.moveTo(this.getX(), this.getY() - 2);
+				this.moveTo(this.getX(), this.getY() - 1);
+				try {
+						Thread.sleep(5);
+					} catch (InterruptedException e) {
+				}
 			}
 			if (heading == 'a') {
-				this.moveTo(this.getX() - 2, this.getY());
+				this.moveTo(this.getX() - 1, this.getY());
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException e) {
+			}
 			}
 			if (heading == 's') {
-				this.moveTo(this.getX(), this.getY() + 2);
+				this.moveTo(this.getX(), this.getY() + 1);
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException e) {
+			}
 			}
 			if (heading == 'a') {
-				this.moveTo(this.getX() + 2, this.getY());
+				this.moveTo(this.getX() + 1, this.getY());
+				try {
+					Thread.sleep(5);
+				} catch (InterruptedException e) {
+			}
 			}
 			overlaps = overlaps();
 		} while (overlaps.size() == 0);

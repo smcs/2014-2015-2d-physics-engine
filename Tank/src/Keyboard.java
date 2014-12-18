@@ -16,7 +16,7 @@ public class Keyboard extends ActiveObject implements KeyListener {
 	boolean keyDown;
 	int lastKey;
 	
-
+ 
 			
 		
 	public Keyboard(Tank tank1, Tank tank2, Bullet b) {
