@@ -72,7 +72,7 @@ public class InteractiveObject{
 	
 	public Vector<InteractiveObject>overlaps(){
 		
-		Vector<InteractiveObject> overlapped = null; //is this where i should initialize overlapped? If so, should it start out null? is there a way to initialize it as an empty vector?
+		Vector<InteractiveObject> overlapped = new Vector <InteractiveObject>(10); //is this where i should initialize overlapped? If so, should it start out null? is there a way to initialize it as an empty vector?
 
 		
 		
