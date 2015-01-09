@@ -7,13 +7,13 @@ public class Main extends WindowController {
 	
 	
 	private Vector <Integer> numberList  = new Vector<Integer>(10);
-	
+	private Bubble bubbleSort = new Bubble();
 	
 	
 	public void printString(){
 
 		for(int i = 0; i<10; i++){
-			System.out.print(numberList.get(i));
+			System.out.print(numberList.get(i) + " ");
 		}
 		System.out.println();
 	}
@@ -40,6 +40,7 @@ public class Main extends WindowController {
 	
 	
 	public void onMousePress(Location l){
-		printString();
+		
+		bubbleSort.sort(numberList);
 	}
 }
