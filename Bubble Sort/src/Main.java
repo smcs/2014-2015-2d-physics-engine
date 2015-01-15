@@ -8,6 +8,7 @@ public class Main extends WindowController {
 	
 	private Vector <Integer> numberList  = new Vector<Integer>(10);
 	private Bubble bubbleSort = new Bubble();
+	private SelectionSort selectionSort = new SelectionSort ();
 	
 	
 	public void printString(){
@@ -41,6 +42,6 @@ public class Main extends WindowController {
 	
 	public void onMousePress(Location l){
 		
-		bubbleSort.sort(numberList);
+		selectionSort.sort(numberList);
 	}
 }
