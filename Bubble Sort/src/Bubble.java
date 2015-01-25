@@ -23,7 +23,7 @@ public class Bubble {
 				
 			}
 		}
-		
+		System.out.print("Bubble Sort: ");
 		for(int i = 0; i<10; i++){
 			System.out.print(list.get(i) + " ");
 		}

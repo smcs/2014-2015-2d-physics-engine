@@ -16,7 +16,7 @@ public class SelectionSort {
 			unsorted.remove(flag);
 
 		}
-
+		System.out.print("Selection Sort: ");
 		for (int i = 0; i < sorted.size(); i++) {
 			System.out.print(sorted.get(i) + " ");
 		}
