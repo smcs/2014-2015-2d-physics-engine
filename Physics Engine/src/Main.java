@@ -1,4 +1,6 @@
+import objectdraw.*;
+import java.awt.*;
 
-public class Main {
+public class Main extends WindowController {
 
 }
