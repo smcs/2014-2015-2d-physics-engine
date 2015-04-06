@@ -16,28 +16,33 @@ public class InteractiveObject{
 
 	protected VisibleImage sprite;
 
-	protected static Vector<InteractiveObject> allObjects = null;
+	protected static Vector<InteractiveObject> allObjects = new Vector<InteractiveObject>();
 	//do I want this to be static? if it is, will that mean that it is the same for all InteractiveObjects
 	
 
 	public InteractiveObject(Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
+		allObjects.addElement(this);
 	}
 	
 	public InteractiveObject(Image i, int x, int y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
+		allObjects.addElement(this);
 	}
 	
 	public InteractiveObject(Image i, long x, long y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
+		allObjects.addElement(this);
 	}
 	
 	public InteractiveObject(Image i, Location l, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, l, width, height, canvas);
+		allObjects.addElement(this);
 	}
 	
 	public InteractiveObject(Image i, int x, int y, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, canvas);
+		allObjects.addElement(this);
 	}
 
 	
