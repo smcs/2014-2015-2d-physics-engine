@@ -15,11 +15,51 @@ reference to the vector overlapped. I am also not entirely sure where and how to
 public class InteractiveObject{
 
 	protected VisibleImage sprite;
+	protected int xVelocity;
+	protected int yVelocity; 
 
 	protected static Vector<InteractiveObject> allObjects = new Vector<InteractiveObject>();
-	//do I want this to be static? if it is, will that mean that it is the same for all InteractiveObjects
-	
 
+	public void wallBounceRight(){
+		if(xVelocity>0){
+			xVelocity = (int)(xVelocity*(-.9));
+			}
+		}
+	
+	public void wallBounceLeft(){
+		if(xVelocity>0){
+			xVelocity = (int)(xVelocity*(-.9));
+			}
+		}
+	public void wallBounceTop(){
+		if(yVelocity>0){
+			yVelocity = (int)(yVelocity*(-.9));
+			}
+		}
+	
+	public void wallBounceBottom(){
+		if(yVelocity>0){
+			yVelocity = (int)(yVelocity*(-.9));
+			}
+		}
+
+	
+	public void move(){
+		xVelocity = xVelocity + 1;
+		sprite.move(xVelocity, yVelocity);
+		
+		xVelocity = (int)(xVelocity*0.97);
+		yVelocity = (int)(yVelocity*0.97);
+		
+		if(sprite.getHeight()+sprite.getY() >= Canvas.HEIGHT){
+			
+		}
+	}
+
+	
+	
+	
+	
 	public InteractiveObject(Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
