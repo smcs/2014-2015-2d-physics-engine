@@ -6,11 +6,6 @@ import objectdraw.*;
 
 
 
-/*I am getting a null pointer exception from the method overlaps, which should return a vector of InteractiveObjects called 
-overlapped. I think that there is an initialization error with overlapped, and that the method is passing around a null 
-reference to the vector overlapped. I am also not entirely sure where and how to initialize that vector.
-*/
-
 
 public class InteractiveObject{
 
