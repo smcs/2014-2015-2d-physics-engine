@@ -7,7 +7,7 @@ import objectdraw.*;
 
 
 
-public class InteractiveObject{
+public class InteractiveObject implements Runnable{
 
 	protected VisibleImage sprite;
 	protected int xVelocity;
@@ -54,30 +54,34 @@ public class InteractiveObject{
 	
 	
 	
-	
 	public InteractiveObject(Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, int x, int y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, long x, long y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, Location l, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, l, width, height, canvas);
 		allObjects.addElement(this);
+		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, int x, int y, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, canvas);
 		allObjects.addElement(this);
+		new Thread(this).start();
 	}
 
 	
@@ -149,8 +153,16 @@ public class InteractiveObject{
 		return overlapped;
 
 	}
+
+	@Override
+	public void run() {
+		while(true){
+			
+		}
+		
+	}
 	
-	//end copied code
+	
 	
 	
 }
