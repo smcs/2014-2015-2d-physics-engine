@@ -23,9 +23,9 @@ public void begin(){
 	green = getImage("Images/Green.png");
 	//this.setSize(1365,800); fullscreen
 	this.setSize(600,500); 
-	redSprite = new InteractiveObject(red, 100, 100, 50, 50, canvas);
-	greenSprite = new InteractiveObject(green, 400, 400, 50, 50, canvas);
-	blueSprite = new InteractiveObject(blue, 200, 200, 50, 50, canvas);
+	redSprite = new InteractiveObject(red, 200, 100, 50, 50, canvas);
+	greenSprite = new InteractiveObject(green, 200, 350, 50, 50, canvas);
+//	blueSprite = new InteractiveObject(blue, 300, 120, 50, 50, canvas);
 	
 	}
 	

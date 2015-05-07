@@ -10,79 +10,130 @@ import objectdraw.*;
 public class InteractiveObject implements Runnable{
 
 	protected VisibleImage sprite;
-	protected int xVelocity;
-	protected int yVelocity; 
-
-	protected static Vector<InteractiveObject> allObjects = new Vector<InteractiveObject>();
-
-	public void wallBounceRight(){
-		if(xVelocity>0){
-			xVelocity = (int)(xVelocity*(-.9));
-			}
-		}
-	
-	public void wallBounceLeft(){
-		if(xVelocity>0){
-			xVelocity = (int)(xVelocity*(-.9));
-			}
-		}
-	public void wallBounceTop(){
-		if(yVelocity>0){
-			yVelocity = (int)(yVelocity*(-.9));
-			}
-		}
-	
-	public void wallBounceBottom(){
-		if(yVelocity>0){
-			yVelocity = (int)(yVelocity*(-.9));
-			}
-		}
-
-	
-	public void move(){
-		xVelocity = xVelocity + 1;
-		sprite.move(xVelocity, yVelocity);
-		
-		xVelocity = (int)(xVelocity*0.97);
-		yVelocity = (int)(yVelocity*0.97);
-		
-		if(sprite.getHeight()+sprite.getY() >= Canvas.HEIGHT){
-			
-		}
-	}
-
-	
+	protected double xVelocity = 0;
+	protected double yVelocity = 0; 
+	protected int xPosition = 0;
+	protected int yPosition = 0;
+	private DrawingCanvas drawingCanvas;
+	private boolean resting = false;
 	
 	
 	public InteractiveObject(Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, int x, int y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, long x, long y, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
+		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, Location l, double width, double height, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, l, width, height, canvas);
 		allObjects.addElement(this);
+		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
 	public InteractiveObject(Image i, int x, int y, DrawingCanvas canvas) {
 		sprite = new VisibleImage(i, x, y, canvas);
 		allObjects.addElement(this);
+		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
+
+	
+
+	protected static Vector<InteractiveObject> allObjects = new Vector<InteractiveObject>();
+
+	public void bounceRight(){
+		if(xVelocity>0){
+			xVelocity = (int)(xVelocity*(-.9));
+			}
+			}
+	
+	public void bounceLeft(){
+		if(xVelocity<0){
+			xVelocity = (int)(xVelocity*(-.9));
+			}
+		}
+	public void bounceTop(){
+		if(yVelocity<0){
+			yVelocity = (int)(yVelocity*(-.9));
+			}
+		}
+	
+	public void bounceBottom(){
+		if(yVelocity>0){
+			yVelocity = (int)(yVelocity*(-1));
+			}
+		}
+
+	
+	public void move(){
+
+		if(!(yVelocity<.5 && sprite.getHeight()+sprite.getY() >= drawingCanvas.getHeight())){
+			yVelocity = yVelocity + 1.5;
+		}
+
+		
+		xVelocity = (xVelocity*0.99);
+		yVelocity = (yVelocity*0.99);
+		xPosition = (int)(xPosition + xVelocity);
+		yPosition = (int)(yPosition + yVelocity);
+		
+		
+		sprite.move(xVelocity, yVelocity);
+		
+		
+		if(sprite.getHeight()+sprite.getY() >= drawingCanvas.getHeight()){
+			if(yVelocity>.1){
+				bounceBottom();
+			}else{
+				yPosition = (int) (drawingCanvas.getHeight() - sprite.getHeight());
+			}
+				
+		}
+		
+		
+		if(sprite.getY() <= 0){
+			bounceTop();
+		}
+		
+		if(sprite.getWidth()+sprite.getX() >= drawingCanvas.getWidth()){
+			bounceRight();
+			}
+		
+		if(sprite.getX() <= 0){
+			bounceLeft();
+		}
+		
+		if(overlaps().size()>0){
+			if((overlaps().get(1).xPosition + overlaps().get(1).sprite.getHeight()) <= sprite.getX() && overlaps().get(1).sprite.getX() > sprite.getX()){
+				bounceTop();
+			}
+		}
+		
+		
+		
+		
+		
+	}
+
+	
+	
+	
 
 	
 	
@@ -91,14 +142,17 @@ public class InteractiveObject implements Runnable{
 	
 	public void moveTo(int x, int y){
 		sprite.moveTo(x,y);
+		resting = false;
 	}
 	
 	public void moveTo(long x, long y){
 		sprite.moveTo(x,y);
+		resting = false;
 	}
 	
 	public void moveTo(Location l){
 		sprite.moveTo(l);
+		resting = false;
 	}
 	
 	
@@ -116,7 +170,7 @@ public class InteractiveObject implements Runnable{
 	
 	public Vector<InteractiveObject>overlaps(){
 		
-		Vector<InteractiveObject> overlapped = new Vector <InteractiveObject>(10); //is this where i should initialize overlapped? If so, should it start out null? is there a way to initialize it as an empty vector?
+		Vector<InteractiveObject> overlapped = new Vector <InteractiveObject>(10);
 
 		
 		
@@ -157,6 +211,17 @@ public class InteractiveObject implements Runnable{
 	@Override
 	public void run() {
 		while(true){
+			
+			move();
+			
+			
+			
+			
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		
