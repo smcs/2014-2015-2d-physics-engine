@@ -164,8 +164,6 @@ public class InteractiveObject implements Runnable{
 	
 	
 	
-	//all code until next comment has been copied out of Tank Wars and should be consider guilty until proven innocent
-	//the method overlaps should return a vector of InteractiveObjects contained within the boundingbox of the InteractiveObject using it
 
 	
 	public Vector<InteractiveObject>overlaps(){
