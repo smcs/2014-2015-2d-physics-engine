@@ -120,8 +120,11 @@ public class InteractiveObject implements Runnable{
 		}
 		
 		if(overlaps().size()>0){
-			if((overlaps().get(1).xPosition + overlaps().get(1).sprite.getHeight()) <= sprite.getX() && overlaps().get(1).sprite.getX() > sprite.getX()){
+			if((overlaps().get(0).xPosition + overlaps().get(0).sprite.getHeight()) <= sprite.getX() && overlaps().get(0).sprite.getX() > sprite.getX()){
 				bounceTop();
+			}
+			if((overlaps().get(0).xPosition + overlaps().get(0).sprite.getHeight()) >= sprite.getX() && overlaps().get(0).sprite.getX() > sprite.getX()){
+				bounceBottom();
 			}
 		}
 		

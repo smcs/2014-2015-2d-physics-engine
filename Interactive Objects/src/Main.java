@@ -23,15 +23,18 @@ public void begin(){
 	green = getImage("Images/Green.png");
 	//this.setSize(1365,800); fullscreen
 	this.setSize(600,500); 
-	redSprite = new InteractiveObject(red, 200, 100, 50, 50, canvas);
-	greenSprite = new InteractiveObject(green, 200, 350, 50, 50, canvas);
-//	blueSprite = new InteractiveObject(blue, 300, 120, 50, 50, canvas);
+	redSprite = new InteractiveObject(red, 200, 400, 50, 50, canvas);
+	greenSprite = new InteractiveObject(green, 300, 400, 50, 50, canvas);
+	blueSprite = new InteractiveObject(blue, 300, 400, 50, 50, canvas);
 	
 	}
 	
 	
 	public void onMousePress(Location l){
 		blueSprite.moveTo(l);
+		
+		blueSprite.xVelocity = 0;
+		blueSprite.yVelocity = 0;
 		
 		if(blueSprite.overlaps().size()>0){
 			System.out.print("hit: ");
