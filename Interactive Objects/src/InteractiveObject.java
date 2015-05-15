@@ -16,37 +16,44 @@ public class InteractiveObject implements Runnable{
 	protected int yPosition = 0;
 	private DrawingCanvas drawingCanvas;
 	private boolean resting = false;
+	protected String name;
 	
 	
-	public InteractiveObject(Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
+	public InteractiveObject(String name, Image i, double x, double y, double width, double height, DrawingCanvas canvas) {
+		this.name = name;
+		xPosition = (int)x;
+		yPosition = (int)y;
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
 		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
-	public InteractiveObject(Image i, int x, int y, double width, double height, DrawingCanvas canvas) {
+	public InteractiveObject(String name, Image i, int x, int y, double width, double height, DrawingCanvas canvas) {
+		this.name = name;
+		xPosition = (int)x;
+		yPosition = (int)y;
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
 		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
-	public InteractiveObject(Image i, long x, long y, double width, double height, DrawingCanvas canvas) {
+	public InteractiveObject(String name, Image i, long x, long y, double width, double height, DrawingCanvas canvas) {
+		this.name = name;
+		xPosition = (int)x;
+		yPosition = (int)y;
 		sprite = new VisibleImage(i, x, y, width, height, canvas);
 		allObjects.addElement(this);
 		drawingCanvas = canvas;
 		new Thread(this).start();
 	}
 	
-	public InteractiveObject(Image i, Location l, double width, double height, DrawingCanvas canvas) {
-		sprite = new VisibleImage(i, l, width, height, canvas);
-		allObjects.addElement(this);
-		drawingCanvas = canvas;
-		new Thread(this).start();
-	}
 	
-	public InteractiveObject(Image i, int x, int y, DrawingCanvas canvas) {
+	public InteractiveObject(String name, Image i, int x, int y, DrawingCanvas canvas) {
+		this.name = name;
+		xPosition = (int)x;
+		yPosition = (int)y;
 		sprite = new VisibleImage(i, x, y, canvas);
 		allObjects.addElement(this);
 		drawingCanvas = canvas;
@@ -61,7 +68,7 @@ public class InteractiveObject implements Runnable{
 		if(xVelocity>0){
 			xVelocity = (int)(xVelocity*(-.9));
 			}
-			}
+		}
 	
 	public void bounceLeft(){
 		if(xVelocity<0){
@@ -126,6 +133,7 @@ public class InteractiveObject implements Runnable{
 			if((overlaps().get(0).xPosition + overlaps().get(0).sprite.getHeight()) >= sprite.getX() && overlaps().get(0).sprite.getX() > sprite.getX()){
 				bounceBottom();
 			}
+			System.out.println(name + ": " + "Top: " + yPosition + "   Right: " + (xPosition + sprite.getWidth()) + "   Left: " + xPosition + "   Bottom: " + (yPosition + sprite.getHeight()));
 		}
 		
 		
@@ -145,16 +153,22 @@ public class InteractiveObject implements Runnable{
 	
 	public void moveTo(int x, int y){
 		sprite.moveTo(x,y);
+		xPosition = (int)x;
+		yPosition = (int)y;
 		resting = false;
 	}
 	
 	public void moveTo(long x, long y){
 		sprite.moveTo(x,y);
+		xPosition = (int)x;
+		yPosition = (int)y;
 		resting = false;
 	}
 	
 	public void moveTo(Location l){
 		sprite.moveTo(l);
+		xPosition = (int)l.getX();
+		yPosition = (int)l.getY();
 		resting = false;
 	}
 	
@@ -229,6 +243,8 @@ public class InteractiveObject implements Runnable{
 	}
 	
 	
-	
+	public String toString() {
+		return name + " @ (" + xPosition + ", " + yPosition + ")";
+	}
 	
 }
